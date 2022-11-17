@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "email": "abc@gmail.com",
+      "password": "123",
+      "data": [
+        { "id": 3, "task": "ssd", "complete": true },
+        { "id": 1, "task": "dsa", "complete": false }
+      ]
+    },
+    {
+      "email": "ab5@gmail.com",
+      "password": "123",
+      "data": [
+        { "id": 3, "task": "ssd", "complete": true },
+        { "id": 1, "task": "dfgdfga", "complete": false },
+        { "id": 1, "task": "rtrega", "complete": false }
+      ]
+    }
+  ]
+}
