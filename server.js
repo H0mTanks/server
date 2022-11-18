@@ -138,6 +138,36 @@ app.post("/todo", (req, res) => {
   });
 });
 
+//*requires email and password
+app.post("/forgot", (req, res) => {
+  console.log("update password");
+
+  // fs.writeFileSync(path, JSON.stringify(newData));
+  fs.readFile(path, (err, dt) => {
+    if (err) {
+      console.log("error");
+      res.send("Could not find data");
+    } else {
+      const { email, password } = req.body;
+
+      let data = JSON.parse(dt);
+      const users = data.users;
+      // console.log(users);
+      const userIdx = users.findIndex((item) => item.email === email);
+      const user = users[userIdx];
+
+      if (user) {
+        data.users[userIdx].password = password;
+        const newData = data;
+        fs.writeFileSync(path, JSON.stringify(newData));
+        res.send({ msg: "password updated", status: true });
+      } else {
+        res.send({ msg: "user does not exist", status: false });
+      }
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log("Listening on port " + port);
 });
